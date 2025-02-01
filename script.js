@@ -9,6 +9,8 @@ document.addEventListener("DOMContentLoaded", function () {
     const homeSection = document.getElementById("home");  // Make sure home section is defined
     const filterButtons = document.querySelectorAll("#filters .filter-button");
 
+    let image = null; // Store the image URL globally
+
     // ✅ Navigation functionality
     navButtons.forEach(button => {
         button.addEventListener("click", function (event) {
@@ -30,6 +32,12 @@ document.addEventListener("DOMContentLoaded", function () {
     // ✅ File Upload Button Functionality
     chooseFileButton.addEventListener("click", function () {
         fileInput.click(); // Open file dialog
+        if (image) {  // Check if an image is uploaded
+            //homeSection.innerHTML = ""; // Clears previous content
+            homeSection.appendChild(image);
+        } else {
+            console.warn("No image uploaded yet.");
+        }
     });
 
     // ✅ Display the selected file name and upload image to Home
@@ -43,16 +51,17 @@ document.addEventListener("DOMContentLoaded", function () {
             // Create a temporary URL for the image
             const imageUrl = URL.createObjectURL(file);
 
-            // Create an image element
-            const image = document.createElement("img");
+            // // Create an image element
+          //  const image = document.createElement("img");
+            image = document.createElement("img");
             image.src = imageUrl;
             image.style.width = "200px";  // Adjust size
             image.style.height = "auto";
             image.style.marginTop = "10px"; // Add spacing
 
-            // Remove any previous images before adding a new one
-            homeSection.innerHTML = ""; // Clears previous content
-            homeSection.appendChild(image); // Add the image to "Home" section
+            // // Remove any previous images before adding a new one
+            // homeSection.innerHTML = ""; // Clears previous content
+            // homeSection.appendChild(image); // Add the image to "Home" section
         } else {
             fileNameDisplay.textContent = "";
         }
