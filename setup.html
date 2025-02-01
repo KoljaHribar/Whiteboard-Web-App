@@ -18,30 +18,27 @@
     <div class="buttons">
         <!-- Each button has a data-section attribute that matches section IDs -->
         <a data-section="home">Home</a>
-        <a data-section="bookmarks">Bookmarks</a>
-        <a data-section="bulletin">My Bulletin</a>
+        <a data-section="bulletin">Create Bulletin</a>
     </div>
 
     <!-- Content Container (Holds Sections) -->
     <div class="content-container">
         <!-- Sections for different pages -->
         <div id="home" class="section active"></div>  <!-- Home section (default) -->
-        <div id="bookmarks" class="section"></div>  <!-- Bookmarks section -->
         <div id="bulletin" class="section">
             <!-- Button inside "My Bulletin" section -->
-            <button class="bulletin-button">Post a bulletin</button>
-        </div>
+            <button class="bulletin-button1">Choose a file</button>
+            <!-- Filters Section -->
+    <div id="filters">
+        <button data-filter="all" class="filter-button active">All</button>
+        <button data-filter="date-posted" class="filter-button">Date Posted</button>
+        <button data-filter="frat-and-sororitylife" class="filter-button">Frat and Sorority Life</button>
+        <button data-filter="music" class="filter-button">Music</button>
+        <button data-filter="plays" class="filter-button">Plays</button>
+        <button data-filter="educational" class="filter-button">Educational</button>
+        <button data-filter="sports" class="filter-button">Sports</button>
     </div>
-
-    <!-- React App Container -->
-    <div id="app"></div>
-
-    <!-- Bulletin Modal -->
-    <div id="bulletinModal" class="modal">
-        <div class="modal-content">
-            <span id="closeModal" class="close">&times;</span>
-            <h2>Choose a jpg/png file to upload:</h2>
-            <button id="file-button">Choose a file</button>
+            <button class="bulletin-button2">Upload a file</button>
         </div>
     </div>
 

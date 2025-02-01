@@ -1,10 +1,8 @@
 document.addEventListener("DOMContentLoaded", function () {
     const navButtons = document.querySelectorAll(".buttons a");
     const sections = document.querySelectorAll(".section");
-    const bulletinButton = document.querySelector(".bulletin-button");
-    const modal = document.getElementById("bulletinModal");
-    const closeModal = document.getElementById("closeModal");
-    const fileButton = document.getElementById("file-button");
+    const bulletinButton1 = document.querySelector(".bulletin-button1");
+    const bulletinButton2 = document.querySelector(".bulletin-button2");
 
     // Navigation functionality
     navButtons.forEach(button => {
@@ -25,25 +23,16 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     // Open modal
-    bulletinButton.addEventListener("click", function () {
+    bulletinButton1.addEventListener("click", function () {
         modal.style.display = "block";
     });
 
-    // Close modal when clicking close button
-    closeModal.addEventListener("click", function () {
-        modal.style.display = "none";
+    bulletinButton2.addEventListener("click", function () {
+        modal.style.display = "block";
     });
-
-    // Close modal when clicking outside of it
-    window.addEventListener("click", function (event) {
-        if (event.target === modal) {
-            modal.style.display = "none";
-        }
-    });
-
-    fileButton.addEventListener("click", function (event) {
-    // React Component Integration
-    alert("File button clicked!");
 });
-   
-});
+// Selecting all filter buttons
+const filterButtons = document.querySelectorAll("#filters .filter-button");
+
+// Logging them to ensure they are recognized
+console.log("Filter buttons loaded:", filterButtons);
