@@ -15,7 +15,19 @@ items.forEach(function(item) {
         });
       });
     });
-  </script>
+  
+var buttons = document.querySelectorAll('#filters button');
 
+buttons.forEach(function(button) {
+  button.addEventListener('click', function() {
+    // Remove the 'active' class from every button
+    buttons.forEach(function(btn) {
+      btn.classList.remove('active');
+    });
+    // Add the 'active' class to the clicked button
+    this.classList.add('active');
+  });
+});
+</script>
 </body>
 </html>
