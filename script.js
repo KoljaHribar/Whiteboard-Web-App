@@ -45,8 +45,9 @@ document.addEventListener("DOMContentLoaded", function () {
             //fileNameDisplay.textContent = "Selected file: " + file.name;
 
             // Create a temporary URL for the image
-            imageUrl = URL.createObjectURL(file);  // Replace with your actual image URL or variable
-            document.getElementById("dynamicImage").src = imageUrl;
+            imageUrl = URL.createObjectURL(file);  // Create a temporary URL
+             // Pass it to the HTML element
+          
             // imageUrl = URL.createObjectURL(file);
         }
         // } else {
@@ -61,11 +62,14 @@ document.addEventListener("DOMContentLoaded", function () {
             {
                 //this is where add to gallery function would go
 
-                const image = document.createElement("img");
-                image.src = imageUrl;
-                image.style.width = "200px";  // Adjust size
-                image.style.height = "auto";
-                image.style.marginTop = "10px"; // Add spacing
+               // const image = document.createElement("img");
+                //image.src = imageUrl;
+               // image.style.width = "200px";  // Adjust size
+                //image.style.height = "auto";
+               // image.style.marginTop = "10px"; // Add spacing
+
+                //document.getElementById("dynamicImage").src = imageUrl;
+                document.getElementById("dynamicImage").src = imageUrl;
 
                 // Remove any previous images before adding a new one
                 //homeSection.innerHTML = ""; // Clears previous content
