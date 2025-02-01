@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en"
+<head> 
+ <meta<charset="UTF-8">
+ <title>Filter</title> 
+</head>
+<body>
+
+ <div id="filters">
+    <button data-filter="all" class="active">All</button>
+    <button data-filter="date-posted">Date Posted</button>
+    <button data-filter="frat-and-sororitylife">Frat and Sorority Life</button>
+    <button data-filter="music">Music</button>
+    <button data-filter="plays">Plays</button>
+    <button data-filter="educational">Educational</button>
+    <button data-filter="sports">Sports</button>
+  </div>   
+
+<div id="items">
+    <div class="item" data-category="date-posted">Item: Date Posted</div>
+    <div class="item" data-category="frat-and-sorties-life">Item: Frat and Sorties Life</div>
+    <div class="item" data-category="music">Item: Music</div>
+    <div class="item" data-category="plays">Item: Plays</div>
+    <div class="item" data-category="educational">Item: Educational</div>
+    <div class="item" data-category="sports">Item: Sports </div>
+  </div>
+
+  <script>
