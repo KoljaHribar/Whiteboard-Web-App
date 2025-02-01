@@ -1,15 +1,43 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Simple Image Gallery</title>
+<style>
+.tab { cursor: pointer; padding: 5px; background-color: lightgray; }
+.active { background-color: #4CAF50; color: white; }
+.image { display: none; width: 400px; margin: 10px; }
+</style>
 </head>
 <body>
 
 <h1>Image Gallery</h1>
 
-<img src="cathy.jpg" alt="Cathy" width="400">
-<img src="bulletin.jpg" alt="Bulletin" width="400">
-<img src="background.jpg" alt="Background" width="400">
-<img src="cathedral.jpg" alt="Cathedral" width="400">
+<!-- Tabs for filtering -->
+<div>
+<span class="tab active" onclick="filterImages('all')">All</span>
+<span class="tab" onclick="filterImages('category1')">One</span>
+<span class="tab" onclick="filterImages('category2')">Two</span>
+</div>
+
+<!-- Gallery -->
+<div>
+<img class="image category1" src="cathy.jpg" alt="Cathy">
+<img class="image category1" src="bulletin.jpg" alt="Bulletin">
+<img class="image category2" src="pitt.jpg" alt="Pitt">
+<img class="image category2" src="cathedral.jpg" alt="Cathedral">
+</div>
+
+<script>
+function filterImages(category) {
+document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
+event.target.classList.add('active');
+document.querySelectorAll('.image').forEach(img => {
+img.style.display = (category === 'all' || img.classList.contains(category)) ? 'inline-block' : 'none';
+});
+}
+</script>
+
 </body>
 </html>
