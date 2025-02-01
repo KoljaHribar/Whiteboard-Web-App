@@ -1,0 +1,51 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Button Color Change Example</title>
+  <style>
+    /* Style for the buttons */
+    #filters button {
+      padding: 8px 12px;
+      margin: 5px;           /* Adds space between the buttons */
+      border: 1px solid #ccc;
+      background: #ddd;
+      cursor: pointer;
+    }
+    /* Active button style: Pitt Blue (#003594) with white text */
+    #filters button.active {
+      background: #003594;   /* Pitt Blue */
+      color: white;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="filters">
+    <button data-filter="all">All</button>
+    <button data-filter="date-posted">Date Posted</button>
+    <button data-filter="frat-and-sorties-life">Frat and Sorties Life</button>
+    <button data-filter="music">Music</button>
+    <button data-filter="plays">Plays</button>
+    <button data-filter="educational">Educational</button>
+    <button data-filter="curtaul">Curtaul</button>
+  </div>
+
+  <script>
+    // Select all buttons in the filters container
+    var buttons = document.querySelectorAll('#filters button');
+
+    // Loop through each button and add a click event listener
+    buttons.forEach(function(button) {
+      button.addEventListener('click', function() {
+        // Remove the 'active' class from every button
+        buttons.forEach(function(btn) {
+          btn.classList.remove('active');
+        });
+        // Add the 'active' class to the clicked button
+        this.classList.add('active');
+      });
+    });
+  </script>
+
+</body>
+</html>
