@@ -1,0 +1,21 @@
+function HomePage() {
+    const [fileURL, setFileURL] = React.useState(null);
+
+    const handleFileChange = (event) => {
+        const file = event.target.files[0]; // Get the first selected file
+        if (file && (file.type === "image/jpeg" || file.type === "image/png")) {
+          setFileURL(URL.createObjectURL(file)); // Create a temporary URL for the image
+      } else {
+        alert("Please select a valid JPEG or PNG file.");
+      }
+    };
+
+    return (
+      <div>
+        <input type="file" onChange={handleFileChange} accept="image/jpeg, image/png"  />
+      </div>
+    );
+  }
+
+  const root = ReactDOM.createRoot(document.getElementById("app"));
+  root.render(<HomePage />);
