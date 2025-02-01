@@ -147,37 +147,45 @@ body {
     transform: scale(1.05);
 }
 /* 🔹 Filter Buttons Styling */
-#filters {
+/* 🔹 Filters Container */
+#filters-container {
     position: absolute;
-    top: 150px;
+    top: 60%;
     left: 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px; /* Spacing between buttons */
+    transform: translateY(-50%);
+    text-align: left;
+    background: #FFB81C;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
 }
 
-.filter-button {
-    padding: 15px 25px;
+/* 🔹 Filters Title */
+#filters-container h3 {
+    text-align: center;
+    color: black;
+    margin-bottom: 10px;
+}
+
+/* 🔹 Filters Grid */
+#filters {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Two columns */
+    gap: 10px; /* Space between checkboxes */
+}
+
+/* 🔹 Style checkboxes */
+#filters label {
+    display: flex;
+    align-items: center;
     font-size: 14px;
     font-weight: bold;
-    background: #FFB81C; /* Pitt Gold */
     color: black;
-    border: none;
-    border-radius: 8px;
     cursor: pointer;
-    transition: all 0.3s ease-in-out;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
-    text-align: left;
-    width: 180px;
 }
 
-/* 🔹 Hover Effect */
-.filter-button:hover {
-    background: #FFC72C; /* Lighter Pitt Gold */
-    transform: scale(1.05);
-}
-
-/* 🔹 Active Button */
-.filter-button.active {
-    background: #D4A017; /* Darker Gold */
+/* 🔹 Make checkboxes slightly bigger */
+#filters input[type="checkbox"] {
+    margin-right: 8px;
+    transform: scale(1.2);
 }

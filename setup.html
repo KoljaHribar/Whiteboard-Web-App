@@ -31,15 +31,18 @@
         <button class="bulletin-button1" id="chooseFileButton">Choose a file</button>
         <span id="fileName"></span>
             <!-- Filters Section -->
-    <div id="filters">
-        <button data-filter="all" class="filter-button active">All</button>
-        <button data-filter="date-posted" class="filter-button">Date Posted</button>
-        <button data-filter="frat-and-sororitylife" class="filter-button">Frat and Sorority Life</button>
-        <button data-filter="music" class="filter-button">Music</button>
-        <button data-filter="plays" class="filter-button">Plays</button>
-        <button data-filter="educational" class="filter-button">Educational</button>
-        <button data-filter="sports" class="filter-button">Sports</button>
-    </div>
+            <!-- Filters Section -->
+            <div id="filters-container">
+            <h3>Select Filters</h3>
+            <div id="filters">
+                <label><input type="checkbox" value="date-posted"> Date Posted</label>
+                <label><input type="checkbox" value="frat-and-sororitylife"> Frat and Sorority Life</label>
+                <label><input type="checkbox" value="music"> Music</label>
+                <label><input type="checkbox" value="plays"> Plays</label>
+                <label><input type="checkbox" value="educational"> Educational</label>
+                <label><input type="checkbox" value="sports"> Sports</label>
+            </div>
+            </div>
             <button class="bulletin-button2">Upload a file</button>
         </div>
     </div>
