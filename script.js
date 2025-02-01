@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const homeSection = document.getElementById("home");  // Make sure home section is defined
     const filterButtons = document.querySelectorAll("#filters .filter-button");
 
-    let image = null; // Store the image URL globally
+    let imageUrl = '';
 
     // ✅ Navigation functionality
     navButtons.forEach(button => {
@@ -32,12 +32,22 @@ document.addEventListener("DOMContentLoaded", function () {
     // ✅ File Upload Button Functionality
     chooseFileButton.addEventListener("click", function () {
         fileInput.click(); // Open file dialog
-        if (image) {  // Check if an image is uploaded
-            //homeSection.innerHTML = ""; // Clears previous content
-            homeSection.appendChild(image);
-        } else {
-            console.warn("No image uploaded yet.");
-        }
+        //if (image) {  // Check if an image is uploaded
+        //image = document.createElement("img");
+       // image.src = imageUrl;
+    //    if (imageUrl)
+    //    {
+    //         image = document.createElement("img");
+    //         image.src = imageUrl;
+    //         image.style.width = "200px";  // Adjust size
+    //         image.style.height = "auto";
+    //         image.style.marginTop = "10px"; // Add spacing
+    //         homeSection.innerHTML = ""; // Clears previous content
+    //         homeSection.appendChild(image);
+    //    }
+       // } else {
+        //    console.warn("No image uploaded yet.");
+       //}
     });
 
     // ✅ Display the selected file name and upload image to Home
@@ -49,15 +59,16 @@ document.addEventListener("DOMContentLoaded", function () {
             fileNameDisplay.textContent = "Selected file: " + file.name;
 
             // Create a temporary URL for the image
-            const imageUrl = URL.createObjectURL(file);
+             imageUrl = URL.createObjectURL(file);
 
             // // Create an image element
-          //  const image = document.createElement("img");
-            image = document.createElement("img");
-            image.src = imageUrl;
-            image.style.width = "200px";  // Adjust size
-            image.style.height = "auto";
-            image.style.marginTop = "10px"; // Add spacing
+            // const image = document.createElement("img");
+
+            // image = document.createElement("img");
+            // image.src = imageUrl;
+            // image.style.width = "200px";  // Adjust size
+            // image.style.height = "auto";
+            // image.style.marginTop = "10px"; // Add spacing
 
             // // Remove any previous images before adding a new one
             // homeSection.innerHTML = ""; // Clears previous content
@@ -70,11 +81,25 @@ document.addEventListener("DOMContentLoaded", function () {
     // ✅ Modal Handling (if you have a modal)
     if (bulletinButton2) {
         bulletinButton2.addEventListener("click", function () {
-            const modal = document.getElementById("modal"); // Define modal
-            if (modal) {
-                modal.style.display = "block";
-            } else {
-                console.warn("Modal element not found.");
+            // const modal = document.getElementById("modal"); // Define modal
+            // if (modal) {
+            //     modal.style.display = "block";
+            // } else {
+            //     console.warn("Modal element not found.");
+            // }
+            if (imageUrl)
+            {
+                const image = document.createElement("img");
+
+                //image = document.createElement("img");
+                image.src = imageUrl;
+                image.style.width = "200px";  // Adjust size
+                image.style.height = "auto";
+                image.style.marginTop = "10px"; // Add spacing
+
+                // Remove any previous images before adding a new one
+                homeSection.innerHTML = ""; // Clears previous content
+                homeSection.appendChild(image); // Add the image to "Home" section
             }
         });
     }
