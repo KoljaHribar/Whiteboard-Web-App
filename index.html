@@ -1,0 +1,115 @@
+<html>
+  <head>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+      }
+      h1 {
+        color: rgb(255, 42, 0);
+      }
+      p {
+        font-size: 18px;
+        color: gray;
+      }
+      .question-block {
+        margin-bottom: 20px;
+      }
+      .answer {
+        cursor: pointer;
+        color: blue;
+        text-decoration: underline;
+      }
+      .answer:hover {
+        color: darkblue;
+      }
+      #resetBtn {
+        margin-top: 20px;
+        padding: 10px;
+        font-size: 16px;
+        background-color: red;
+        color: white;
+        border: none;
+        cursor: pointer;
+      }
+      #resetBtn:hover {
+        background-color: darkred;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Hello Ari!</h1>
+    <div id="app"></div>
+    <button id="resetBtn">Reset Quiz</button>
+
+    <script>
+      // Select the div element with 'app' id
+      const app = document.getElementById('app');
+      const resetBtn = document.getElementById('resetBtn');
+
+      // Quiz data
+      const quizData = [
+        { 
+          question: 'What country is Melania Trump from?', 
+          answers: ['a) Slovakia', 'b) Germany', 'c) Slovenia'], 
+          correct: 'c) Slovenia'
+        },
+        { 
+          question: 'Which language is spoken in Brazil?', 
+          answers: ['a) Spanish', 'b) Portuguese', 'c) French'], 
+          correct: 'b) Portuguese'
+        },
+        { 
+          question: 'What is the capital of Japan?', 
+          answers: ['a) Beijing', 'b) Tokyo', 'c) Seoul'], 
+          correct: 'b) Tokyo'
+        }
+      ];
+
+      // Loop through quiz questions and display them
+      function generateQuiz() {
+        app.innerHTML = "";
+      quizData.forEach((item, index) => {
+        // Create a container for each question
+        const questionBlock = document.createElement('div');
+        questionBlock.classList.add('question-block');
+
+        // Create and add the question text
+        const question = document.createElement('p');
+        question.textContent = `${index + 1}. ${item.question}`;
+        questionBlock.appendChild(question);
+
+        // Create answer choices
+        item.answers.forEach(answer => {
+          const answerElement = document.createElement('p');
+          answerElement.textContent = answer;
+          answerElement.classList.add('answer');
+
+          // Add click event to check answer
+          answerElement.addEventListener('click', function () {
+          if (answer === item.correct) {
+          answerElement.style.color = "green";  // Correct answer turns green
+          } else {
+          answerElement.style.color = "red";  // Wrong answer turns red
+          }
+          });
+
+          questionBlock.appendChild(answerElement);
+        });
+
+        // Add the question block to the app
+        app.appendChild(questionBlock);
+
+      });
+    }
+    function resetQuiz() {
+        generateQuiz(); // Regenerate the quiz from the beginning
+      }
+
+      resetBtn.addEventListener('click', resetQuiz);
+
+      generateQuiz();
+
+    </script>
+  </body>
+</html>
