@@ -1,0 +1,133 @@
+body {
+    background-image: url('cathy.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+    margin: 0;
+    text-align: center;
+    color: white;
+    font-family: Arial, sans-serif;
+    overflow: hidden; /* Prevent scrolling */
+}
+
+/* Navigation buttons */
+.buttons {
+    position: fixed;
+    top: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 20px;
+    z-index: 1000;
+}
+
+/* Text-only buttons */
+.buttons a {
+    font-size: 18px;
+    font-weight: bold;
+    color: rgb(49, 49, 49);
+    text-decoration: none;
+    position: relative;
+    padding-bottom: 5px;
+    transition: color 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+/* Underline effect on hover */
+.buttons a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 2px;
+    background: white;
+    transform: scaleX(0);
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Hover effect */
+.buttons a:hover {
+    color: #FFB81C;
+}
+
+.buttons a:hover::after {
+    transform: scaleX(1);
+}
+
+/* Content container (prevents scrolling) */
+.content-container {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Sections - Hidden by default */
+.section {
+    display: none; /* ✅ Hide sections initially */
+    width: 100vw;
+    height: 100vh;
+}
+
+/* Make the active section visible */
+.active {
+    display: block;
+}
+
+/* Pitt FOMO title */
+.logo {
+    position: fixed;
+    top: 10px;
+    left: 20px;
+    font-size: 36px;
+    font-weight: bold;
+    color: rgb(22, 21, 21);
+    text-decoration: none;
+    font-family: 'Arial', sans-serif;
+    transition: color 0.3s ease-in-out;
+    z-index: 1000;
+}
+
+/* Hover effect */
+.logo:hover {
+    color: #FFB81C;
+}
+
+/* Section-specific backgrounds */
+#bookmarks {
+    background-image: url('background.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+#bulletin {
+    background-image: url('Bulletin.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+/* Bottom-right button inside "My Bulletin" */
+.bulletin-button {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    padding: 12px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    background: #FFB81C;
+    color: black;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* Hover effect for button */
+.bulletin-button:hover {
+    background: #FFC72C;
+    transform: scale(1.05);
+}
