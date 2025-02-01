@@ -27,7 +27,9 @@
         <div id="home" class="section active"></div>  <!-- Home section (default) -->
         <div id="bulletin" class="section">
             <!-- Button inside "My Bulletin" section -->
-            <button class="bulletin-button1">Choose a file</button>
+        <input type="file" id="fileInput" class="bulletin-button1" style="display: none;">
+        <button class="bulletin-button1" id="chooseFileButton">Choose a file</button>
+        <span id="fileName"></span>
             <!-- Filters Section -->
     <div id="filters">
         <button data-filter="all" class="filter-button active">All</button>

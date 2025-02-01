@@ -1,7 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
     const navButtons = document.querySelectorAll(".buttons a");
     const sections = document.querySelectorAll(".section");
-    const bulletinButton1 = document.querySelector(".bulletin-button1");
     const bulletinButton2 = document.querySelector(".bulletin-button2");
 
     // Navigation functionality
@@ -22,13 +21,46 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
-    // Open modal
-    bulletinButton1.addEventListener("click", function () {
-        modal.style.display = "block";
+  document.addEventListener("DOMContentLoaded", function () {
+    const chooseFileButton = document.getElementById("chooseFileButton");
+    const fileInput = document.getElementById("fileInput");
+    const fileNameDisplay = document.getElementById("fileName");
+
+    // When button is clicked, open the file dialog
+    chooseFileButton.addEventListener("click", function () {
+        fileInput.click();
     });
 
+    // Display the selected file name
+    fileInput.addEventListener("change", function () {
+        if (fileInput.files.length > 0) {
+            fileNameDisplay.textContent = "Selected file: " + fileInput.files[0].name;
+        } else {
+            fileNameDisplay.textContent = "";
+        }
+    });
+});
     bulletinButton2.addEventListener("click", function () {
         modal.style.display = "block";
+    });
+});
+document.addEventListener("DOMContentLoaded", function () {
+    const chooseFileButton = document.getElementById("chooseFileButton");
+    const fileInput = document.getElementById("fileInput");
+    const fileNameDisplay = document.getElementById("fileName");
+
+    // When button is clicked, open the file dialog
+    chooseFileButton.addEventListener("click", function () {
+        fileInput.click();
+    });
+
+    // Display the selected file name
+    fileInput.addEventListener("change", function () {
+        if (fileInput.files.length > 0) {
+            fileNameDisplay.textContent = "Selected file: " + fileInput.files[0].name;
+        } else {
+            fileNameDisplay.textContent = "";
+        }
     });
 });
 // Selecting all filter buttons
