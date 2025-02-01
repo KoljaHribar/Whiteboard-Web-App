@@ -1,0 +1,21 @@
+<script> 
+var buttons = document.querySelectorAll('#filters button');
+    var items = document.querySelectorAll('.item');
+
+buttons.forEach(function(button) {
+      button.addEventListener('click', function() {
+        var filter = this.getAttribute('data-filter');
+
+items.forEach(function(item) {
+          if (filter === 'all' || item.getAttribute('data-category') === filter) {
+            item.style.display = ''; // 
+          } else {
+            item.style.display = 'none'; // 
+          }
+        });
+      });
+    });
+  </script>
+
+</body>
+</html>
