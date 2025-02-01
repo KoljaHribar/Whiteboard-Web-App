@@ -45,7 +45,9 @@ document.addEventListener("DOMContentLoaded", function () {
             //fileNameDisplay.textContent = "Selected file: " + file.name;
 
             // Create a temporary URL for the image
-             imageUrl = URL.createObjectURL(file);
+            imageUrl = URL.createObjectURL(file);  // Replace with your actual image URL or variable
+            document.getElementById("dynamicImage").src = imageUrl;
+            // imageUrl = URL.createObjectURL(file);
         }
         // } else {
         //     fileNameDisplay.textContent = "";
@@ -58,6 +60,7 @@ document.addEventListener("DOMContentLoaded", function () {
             if (imageUrl)
             {
                 //this is where add to gallery function would go
+
                 const image = document.createElement("img");
                 image.src = imageUrl;
                 image.style.width = "200px";  // Adjust size
@@ -65,8 +68,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 image.style.marginTop = "10px"; // Add spacing
 
                 // Remove any previous images before adding a new one
-                homeSection.innerHTML = ""; // Clears previous content
-                homeSection.appendChild(image); // Add the image to "Home" section
+                //homeSection.innerHTML = ""; // Clears previous content
+                //homeSection.appendChild(image); // Add the image to "Home" section
             }
         });
     }
@@ -75,6 +78,5 @@ document.addEventListener("DOMContentLoaded", function () {
     console.log("Filter buttons loaded:", filterButtons);
 });
 
-//FUNCTIONS
 
 
