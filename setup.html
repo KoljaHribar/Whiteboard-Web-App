@@ -1,29 +1,38 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8"> <!-- Ensures proper character encoding (like emojis, special characters...) -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Makes the website mobile responsive -->
     <title>Whiteboard</title>
+
+    <!-- Link to external CSS file for styling -->
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-    <!-- Pitt FOMO Title -->
+    <!-- Pitt FOMO Title (Top Left) -->
     <a href="#" class="logo">Pitt FOMO</a>
 
-    <!-- Buttons at the top -->
+    <!-- Navigation Buttons at the Top -->
     <div class="buttons">
-        <a onclick="showSection('home')">Home</a>
-        <a onclick="showSection('bookmarks')">Bookmarks</a>
-        <a onclick="showSection('bulletin')">My Bulletin</a>
+        <!-- Each button has a data-section attribute that matches section IDs -->
+        <a data-section="home">Home</a>
+        <a data-section="bookmarks">Bookmarks</a>
+        <a data-section="bulletin">My Bulletin</a>
     </div>
 
-    <!-- Content Container -->
+    <!-- Content Container (Holds Sections) -->
     <div class="content-container">
-        <div id="home" class="section active"></div>  <!-- Show home by default -->
-        <div id="bookmarks" class="section"></div>
+        <!-- Sections for different pages -->
+        <div id="home" class="section active"></div>  <!-- Home section (default) -->
+        <div id="bookmarks" class="section"></div>  <!-- Bookmarks section -->
         <div id="bulletin" class="section">
+            <!-- Button inside "My Bulletin" section -->
             <button class="bulletin-button">Post a bulletin</button>
         </div>
     </div>
 
+    <!-- Link to external JavaScript file for interactivity -->
     <script src="script.js"></script>
 
 </body>
