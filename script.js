@@ -1,36 +1,41 @@
-// Wait until the entire HTML document is fully loaded before running the script
 document.addEventListener("DOMContentLoaded", function () {
-    // Store the currently active section (default is "home")
-    let activeSection = document.getElementById("home"); 
+    // Select the navigation buttons
+    const navButtons = document.querySelectorAll(".buttons a");
+    const sections = document.querySelectorAll(".section");
+    const bulletinButton = document.querySelector(".bulletin-button");
+    const modal = document.getElementById("bulletinModal");
+    const closeModal = document.getElementById("closeModal");
 
-    // 🔹 Step 1: Add a click event listener to the navigation buttons container 
-    document.querySelector('.buttons').addEventListener('click', function (event) {
-        // 🔹 Step 2: Check if the clicked element is an <a> (navigation link)
-        if (event.target.tagName === "A") {
-            let sectionId = event.target.dataset.section; // Get the section ID from data-section attribute
-            showSection(sectionId); // Call function to switch sections
-        }
+    // Navigation functionality
+    navButtons.forEach(button => {
+        button.addEventListener("click", function () {
+            // Hide all sections
+            sections.forEach(section => section.classList.remove("active"));
+            
+            // Get the target section from data-section attribute
+            const targetSection = document.getElementById(button.getAttribute("data-section"));
+            
+            // Show the selected section
+            if (targetSection) {
+                targetSection.classList.add("active");
+            }
+        });
     });
 
-    // Function to show the selected section and hide others
-    //  🛑 Start of showSection
-    function showSection(sectionId) {
-        // 🔹 Step 3: Get the target section by its ID
-        let targetSection = document.getElementById(sectionId);
+    // Bulletin button functionality
+    bulletinButton.addEventListener("click", function () {
+        modal.style.display = "block";
+    });
 
-        // 🔹 Step 4: If the target section does not exist, exit the function to prevent errors
-        if (!targetSection) return; 
+    // Close modal when clicking close button
+    closeModal.addEventListener("click", function () {
+        modal.style.display = "none";
+    });
 
-        // 🔹 Step 5: Hide the currently active section
-        if (activeSection) {
-            activeSection.classList.remove('active'); // Remove "active" class to hide it
-            activeSection.setAttribute('aria-hidden', 'true'); // Hide from screen readers
+    // Close modal when clicking outside of it
+    window.addEventListener("click", function (event) {
+        if (event.target === modal) {
+            modal.style.display = "none";
         }
-
-        // 🔹 Step 6: Show the newly selected section
-        activeSection = targetSection; // Update the activeSection variable
-        activeSection.classList.add('active'); // Make the new section visible
-        activeSection.setAttribute('aria-hidden', 'false'); // Make it accessible to screen readers
-    }
-    //  🛑 End of showSection
+    });
 });
