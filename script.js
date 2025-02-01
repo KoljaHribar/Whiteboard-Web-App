@@ -10,8 +10,9 @@ document.addEventListener("DOMContentLoaded", function () {
     const filterButtons = document.querySelectorAll("#filters .filter-button");
 
     let imageUrl = '';
+    //potentially add image as global so we can add to gallery
 
-    // ✅ Navigation functionality
+    // Navigation functionality
     navButtons.forEach(button => {
         button.addEventListener("click", function (event) {
             event.preventDefault(); // Prevent default link behavior
@@ -29,69 +30,35 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
-    // ✅ File Upload Button Functionality
+    // File Upload Button Functionality
     chooseFileButton.addEventListener("click", function () {
         fileInput.click(); // Open file dialog
-        //if (image) {  // Check if an image is uploaded
-        //image = document.createElement("img");
-       // image.src = imageUrl;
-    //    if (imageUrl)
-    //    {
-    //         image = document.createElement("img");
-    //         image.src = imageUrl;
-    //         image.style.width = "200px";  // Adjust size
-    //         image.style.height = "auto";
-    //         image.style.marginTop = "10px"; // Add spacing
-    //         homeSection.innerHTML = ""; // Clears previous content
-    //         homeSection.appendChild(image);
-    //    }
-       // } else {
-        //    console.warn("No image uploaded yet.");
-       //}
+      
     });
 
-    // ✅ Display the selected file name and upload image to Home
+    // Display the selected file name and create temporary URL
     fileInput.addEventListener("change", function () {
         if (fileInput.files.length > 0) {
             const file = fileInput.files[0];
 
-            // Display file name
-            fileNameDisplay.textContent = "Selected file: " + file.name;
+            // Display file name    //I don't think this is necessary
+            //fileNameDisplay.textContent = "Selected file: " + file.name;
 
             // Create a temporary URL for the image
              imageUrl = URL.createObjectURL(file);
-
-            // // Create an image element
-            // const image = document.createElement("img");
-
-            // image = document.createElement("img");
-            // image.src = imageUrl;
-            // image.style.width = "200px";  // Adjust size
-            // image.style.height = "auto";
-            // image.style.marginTop = "10px"; // Add spacing
-
-            // // Remove any previous images before adding a new one
-            // homeSection.innerHTML = ""; // Clears previous content
-            // homeSection.appendChild(image); // Add the image to "Home" section
-        } else {
-            fileNameDisplay.textContent = "";
         }
+        // } else {
+        //     fileNameDisplay.textContent = "";
+        // }
     });
 
-    // ✅ Modal Handling (if you have a modal)
+    // display image on home section
     if (bulletinButton2) {
         bulletinButton2.addEventListener("click", function () {
-            // const modal = document.getElementById("modal"); // Define modal
-            // if (modal) {
-            //     modal.style.display = "block";
-            // } else {
-            //     console.warn("Modal element not found.");
-            // }
             if (imageUrl)
             {
+                //this is where add to gallery function would go
                 const image = document.createElement("img");
-
-                //image = document.createElement("img");
                 image.src = imageUrl;
                 image.style.width = "200px";  // Adjust size
                 image.style.height = "auto";
@@ -104,6 +71,10 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    // ✅ Filter Button Logging
+    // Filter Button Logging
     console.log("Filter buttons loaded:", filterButtons);
 });
+
+//FUNCTIONS
+
+
