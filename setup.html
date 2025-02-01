@@ -25,26 +25,22 @@
     <div class="content-container">
         <!-- Sections for different pages -->
         <div id="home" class="section active">  <!-- Home section (default) there was a </div> at the end of this line-->
-
-        function(image_url)
-        {
-            
-        }
-
+        
         <!-------------------------------------------------------------------------------->
         <!-- Image Gallery Section -->
         <h2>Image Gallery</h2>
         <div>
-            <span class="tab active" onclick="filterImages(event,'all')">All</span>
-            <span class="tab" onclick="filterImages('category1')">Category 1</span>
-            <span class="tab" onclick="filterImages('category2')">Category 2</span>
+            <span class="tab active" onclick="filterImages(event, 'all')">All</span>
+            <span class="tab" onclick="filterImages(event, 'arts')">Arts</span>
+            <span class="tab" onclick="filterImages(event, 'education')">Education</span>
+            <span class="tab" onclick="filterImages(event, 'sports')">Sports</span>
+
         </div>
 
         <div>
-            <img class="image category1" src="cathy.jpg" width="180" height="240">
-            <img class="image category1" src="bulletin.jpg" width="180" height="240">
-            <img class="image category2" id="dynamicImage" width="180" height="240">
-            <img class="image category2" src="catherdral.jpg" width="180" height="240">
+            <img class="image arts" src="cathy.jpg" width="180" height="240">
+            <img class="image education" src="bulletin.jpg" width="180" height="240">
+            <img class="image sports" id="dynamicImage" width="180" height="240">
         </div>
 
     </div>
@@ -58,7 +54,6 @@
         <input type="file" id="fileInput" class="bulletin-button1" style="display: none;">
         <button class="bulletin-button1" id="chooseFileButton">Choose a file</button>
         <span id="fileName"></span>
-            <!-- Filters Section -->
             <!-- Filters Section -->
             <div id="filters-container">
             <h3>Select Filters</h3>
@@ -78,9 +73,9 @@
 
     <!--------------------------------------------------------->
     <script>
-        function filterImages(category) {
+        function filterImages(event, category) {
             document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
-            event.target.classList.add('active');
+            event.target.classList.add('active'); 
             document.querySelectorAll('.image').forEach(img => {
                 img.style.display = (category === 'all' || img.classList.contains(category)) ? 'inline-block' : 'none';
             });
