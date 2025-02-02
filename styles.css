@@ -146,6 +146,29 @@ body {
     background: #FFC72C; /* Lighter Pitt Gold */
     transform: scale(1.05);
 }
+
+.bulletin-button3 {
+    position: absolute;
+    bottom: 20px;
+    left: 700px;
+    padding: 20px 30px;
+    font-size: 16px;
+    font-weight: bold;
+    background: #c33453; /* Pitt Gold */
+    color: black;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* 🔹 Hover Effect for Button */
+.bulletin-button3:hover {
+    background: #f10303; /* Lighter Pitt Gold */
+    transform: scale(1.05);
+}
+
 /* 🔹 Filter Buttons Styling */
 /* 🔹 Filters Container */
 #filters-container {

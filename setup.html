@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"> <!-- Defines the document type and language -->
 <head>
     <meta charset="UTF-8"> <!-- Ensures proper character encoding (like emojis, special characters...) -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Makes the website mobile responsive -->
-    <title>Whiteboard</title>
+    <title>Whiteboard</title> <!-- Sets the page title in the browser tab -->
 
     <!-- Link to external CSS file for styling -->
     <link rel="stylesheet" href="styles.css">
@@ -12,94 +12,101 @@
 <body>
 
     <!-- Pitt FOMO Title (Top Left) -->
-    <a href="#" class="logo">Pitt FOMO</a>
+    <a href="#" class="logo">Pitt FOMO</a> <!-- Website title that also acts as a clickable link -->
 
     <!-- Navigation Buttons at the Top -->
     <div class="buttons">
         <!-- Each button has a data-section attribute that matches section IDs -->
-        <a data-section="home">Home</a>
-        <a data-section="bulletin">Create Bulletin</a>
+        <a data-section="home">Home</a> <!-- Navigates to the Home section -->
+        <a data-section="bulletin">Create Bulletin</a> <!-- Navigates to the Bulletin section -->
     </div>
 
     <!-- Content Container (Holds Sections) -->
     <div class="content-container">
-        <!-- Sections for different pages -->
-        <div id="home" class="section active">  <!-- Home section (default) there was a </div> at the end of this line-->
+        
+        <!-- Home Section (Default) -->
+        <div id="home" class="section active">  <!-- Home section is active by default -->
         
         <!-------------------------------------------------------------------------------->
         <!-- Image Gallery Section -->
         <div>
+            <!-- Tabs for filtering images by category -->
             <span class="tab active" onclick="filterImages(event, 'all')">All</span>
             <span class="tab" onclick="filterImages(event, 'arts')">Arts</span>
             <span class="tab" onclick="filterImages(event, 'education')">Education</span>
             <span class="tab" onclick="filterImages(event, 'sports')">Sports</span>
-
         </div>
 
+        <!-- Image placeholders for different categories -->
         <div>
-            <img class="image arts" src="cathy.jpg" width="180" height="240">
-            <img class="image education" src="bulletin.jpg" width="180" height="240">
-            <img class="image sports" id="dynamicImage" width="180" height="240">
+            <img class="image arts" src="cathy.jpg" width="180" height="240"> <!-- Image for Arts category -->
+            <img class="image education" src="bulletin.jpg" width="180" height="240"> <!-- Image for Education category -->
+            <img class="image sports" id="dynamicImage" width="180" height="240"> <!-- Image for Sports category (dynamic) -->
         </div>
 
     </div>
-        <!-------------------------------------------------------------------------------->
+    <!-------------------------------------------------------------------------------->
 
+    <!-- Bulletin Section (For Uploading Files) -->
+    <div id="bulletin" class="section">
+        <!-- File upload input (Hidden by default) -->
+        <input type="file" id="fileInput" class="bulletin-button1" style="display: none;">
+        <button class="bulletin-button1" id="chooseFileButton">Choose a file</button> <!-- Button to trigger file selection -->
+        <span id="fileName"></span> <!-- Displays selected file name -->
 
-
-
-        <div id="bulletin" class="section">
-            <!-- File upload input (Hidden) -->
-            <input type="file" id="fileInput" class="bulletin-button1" style="display: none;">
-            <button class="bulletin-button1" id="chooseFileButton">Choose a file</button>
-            <span id="fileName"></span>
-        
-            <!-- Filters Section -->
-            <div id="filters-container">
-                <h3>Select Filters</h3>
-                <div id="filters">
-                    <label><input type="checkbox" value="arts"> Arts</label>
-                    <label><input type="checkbox" value="educational"> Education</label>
-                    <label><input type="checkbox" value="sports"> Sports</label>
-                </div>
+        <!-- Filters Section (Checkboxes to categorize uploaded files) -->
+        <div id="filters-container">
+            <h3>Select Filters</h3> <!-- Heading for filter selection -->
+            <div id="filters">
+                <label><input type="checkbox" value="arts"> Arts</label> <!-- Checkbox for Arts category -->
+                <label><input type="checkbox" value="education"> Education</label> <!-- Checkbox for Education category -->
+                <label><input type="checkbox" value="sports"> Sports</label> <!-- Checkbox for Sports category -->
             </div>
-        
-            <button class="bulletin-button2" id="uploadButton">Upload a file</button>
-            
-            <!-- Remove File Button -->
-            <button class="bulletin-button2" id="removeFileButton" style="background: red; display: none;">Remove File</button>
         </div>
-        
 
-    <!-- Link to external JavaScript file for interactivity -->
+        <!-- Upload Button -->
+        <button class="bulletin-button2" id="uploadButton">Upload a file</button>
+
+        <!-- Remove File Button (Hidden by default, appears after a file is uploaded) -->
+        <button class="bulletin-button3" id="removeFileButton" style="background: red; display: none;">Remove File</button>
+    </div>
+    
+    </div> <!-- Closing content-container div -->
+
+    <!-- Link to External JavaScript File for Functionality -->
     <script src="script.js"></script>
 
-
     <!--------------------------------------------------------->
+    <!-- JavaScript to Handle Image Filtering -->
     <script>
         function filterImages(event, category) {
+            // Remove the "active" class from all category tabs
             document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
+
+            // Add "active" class to the selected tab
             event.target.classList.add('active'); 
+
+            // Loop through all images and hide/show based on the selected category
             document.querySelectorAll('.image').forEach(img => {
                 img.style.display = (category === 'all' || img.classList.contains(category)) ? 'inline-block' : 'none';
             });
-    
-            // Retrieve uploaded file data
+
+            // Retrieve uploaded file data from localStorage
             const uploadedFileData = JSON.parse(localStorage.getItem("uploadedFile"));
             if (uploadedFileData) {
                 const dynamicImage = document.getElementById("dynamicImage");
-                dynamicImage.src = uploadedFileData.fileURL; // Load stored image
+                dynamicImage.src = uploadedFileData.fileURL; // Load the stored uploaded image
                 dynamicImage.style.display = uploadedFileData.categories.includes(category) || category === "all" ? 'inline-block' : 'none';
             }
         }
-    
-        // Load stored file on page load
+
+        // Load the stored file on page load
         document.addEventListener("DOMContentLoaded", function () {
             const uploadedFileData = JSON.parse(localStorage.getItem("uploadedFile"));
             if (uploadedFileData) {
                 const dynamicImage = document.getElementById("dynamicImage");
-                dynamicImage.src = uploadedFileData.fileURL; // Keep the uploaded file visible
-                dynamicImage.style.display = "inline-block"; // Ensure it's visible
+                dynamicImage.src = uploadedFileData.fileURL; // Ensure uploaded file is visible
+                dynamicImage.style.display = "inline-block"; // Ensure it's displayed
             }
         });
     </script>    
