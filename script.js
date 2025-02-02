@@ -81,6 +81,98 @@ document.addEventListener("DOMContentLoaded", function () {
     // Filter Button Logging
     console.log("Filter buttons loaded:", filterButtons);
 });
+document.addEventListener("DOMContentLoaded", function () {
+    const checkboxes = document.querySelectorAll("#filters input[type='checkbox']");
+    const uploadButton = document.getElementById("uploadButton");
+    const removeFileButton = document.getElementById("removeFileButton");
+    const fileInput = document.getElementById("fileInput");
+    const fileNameDisplay = document.getElementById("fileName");
+    let selectedCategories = [];
+    let selectedFile = null; // Store the selected file properly
 
+    // Function to update selected categories
+    function updateCategories() {
+        selectedCategories = Array.from(checkboxes)
+            .filter(checkbox => checkbox.checked)
+            .map(checkbox => checkbox.value);
+    }
 
+    // Listen for changes in checkboxes
+    checkboxes.forEach(checkbox => {
+        checkbox.addEventListener("change", updateCategories);
+    });
 
+    // Handle file selection and store the selected file
+    fileInput.addEventListener("change", function () {
+        if (fileInput.files.length > 0) {
+            selectedFile = fileInput.files[0]; // Store file for later use
+            fileNameDisplay.textContent = selectedFile.name;
+        } else {
+            selectedFile = null; // Reset if no file is selected
+            fileNameDisplay.textContent = "";
+        }
+    });
+
+    // Handle file upload
+    uploadButton.addEventListener("click", function () {
+        if (selectedCategories.length === 0) {
+            alert("Please select at least one category before uploading.");
+            return;
+        }
+
+        if (!selectedFile) { // Check stored file instead of fileInput.files
+            alert("No file selected.");
+            return;
+        }
+
+        const reader = new FileReader();
+        reader.onload = function (e) {
+            const fileData = {
+                name: selectedFile.name,
+                categories: selectedCategories,
+                fileURL: e.target.result
+            };
+            localStorage.setItem("uploadedFile", JSON.stringify(fileData));
+
+            alert("File uploaded successfully under categories: " + selectedCategories.join(", "));
+
+            // Show the remove button after upload
+            removeFileButton.style.display = "inline-block";
+            fileNameDisplay.textContent = selectedFile.name;
+
+            // Reset file input after upload
+            fileInput.value = "";
+            selectedFile = null;
+        };
+        reader.readAsDataURL(selectedFile);
+    });
+
+    // Function to remove file
+    removeFileButton.addEventListener("click", function () {
+        localStorage.removeItem("uploadedFile");
+
+        // Clear UI
+        fileNameDisplay.textContent = "";
+        const dynamicImage = document.getElementById("dynamicImage");
+        if (dynamicImage) {
+            dynamicImage.src = "";
+            dynamicImage.style.display = "none";
+        }
+
+        // Reset file input properly
+        fileInput.value = "";
+        selectedFile = null; // Also reset stored file reference
+
+        // Hide the remove button
+        removeFileButton.style.display = "none";
+
+        alert("File removed successfully.");
+    });
+
+    // Load stored file on page load
+    const uploadedFileData = JSON.parse(localStorage.getItem("uploadedFile"));
+    if (uploadedFileData) {
+        fileNameDisplay.textContent = uploadedFileData.name;
+        removeFileButton.style.display = "inline-block";
+    }
+});

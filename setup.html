@@ -49,22 +49,27 @@
 
 
         <div id="bulletin" class="section">
-            <!-- Button inside "My Bulletin" section -->
-        <input type="file" id="fileInput" class="bulletin-button1" style="display: none;">
-        <button class="bulletin-button1" id="chooseFileButton">Choose a file</button>
-        <span id="fileName"></span>
+            <!-- File upload input (Hidden) -->
+            <input type="file" id="fileInput" class="bulletin-button1" style="display: none;">
+            <button class="bulletin-button1" id="chooseFileButton">Choose a file</button>
+            <span id="fileName"></span>
+        
             <!-- Filters Section -->
             <div id="filters-container">
-            <h3>Select Filters</h3>
-            <div id="filters">
-                <label><input type="checkbox" value="arts"> Arts</label>
-                <label><input type="checkbox" value="educational"> Education</label>
-                <label><input type="checkbox" value="sports"> Sports</label>
+                <h3>Select Filters</h3>
+                <div id="filters">
+                    <label><input type="checkbox" value="arts"> Arts</label>
+                    <label><input type="checkbox" value="educational"> Education</label>
+                    <label><input type="checkbox" value="sports"> Sports</label>
+                </div>
             </div>
-            </div>
-            <button class="bulletin-button2">Upload a file</button>
+        
+            <button class="bulletin-button2" id="uploadButton">Upload a file</button>
+            
+            <!-- Remove File Button -->
+            <button class="bulletin-button2" id="removeFileButton" style="background: red; display: none;">Remove File</button>
         </div>
-    </div>
+        
 
     <!-- Link to external JavaScript file for interactivity -->
     <script src="script.js"></script>
@@ -78,8 +83,26 @@
             document.querySelectorAll('.image').forEach(img => {
                 img.style.display = (category === 'all' || img.classList.contains(category)) ? 'inline-block' : 'none';
             });
+    
+            // Retrieve uploaded file data
+            const uploadedFileData = JSON.parse(localStorage.getItem("uploadedFile"));
+            if (uploadedFileData) {
+                const dynamicImage = document.getElementById("dynamicImage");
+                dynamicImage.src = uploadedFileData.fileURL; // Load stored image
+                dynamicImage.style.display = uploadedFileData.categories.includes(category) || category === "all" ? 'inline-block' : 'none';
+            }
         }
-    </script>
+    
+        // Load stored file on page load
+        document.addEventListener("DOMContentLoaded", function () {
+            const uploadedFileData = JSON.parse(localStorage.getItem("uploadedFile"));
+            if (uploadedFileData) {
+                const dynamicImage = document.getElementById("dynamicImage");
+                dynamicImage.src = uploadedFileData.fileURL; // Keep the uploaded file visible
+                dynamicImage.style.display = "inline-block"; // Ensure it's visible
+            }
+        });
+    </script>    
 
     <!--------------------------------------------------------->
 </body>
