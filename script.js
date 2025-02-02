@@ -1,6 +1,8 @@
 // Wait for the entire HTML document to be fully loaded before executing the script
 document.addEventListener("DOMContentLoaded", function () {
 
+    //array to store URLS
+   
     // 🔹 Get necessary elements from the DOM
     const navButtons = document.querySelectorAll(".buttons a"); // Selects all navigation buttons
     const sections = document.querySelectorAll(".section"); // Selects all sections in the page
@@ -27,7 +29,7 @@ document.addEventListener("DOMContentLoaded", function () {
             // Make the selected section visible
             if (targetSection) {
                 targetSection.classList.add("active");
-            }
+            }   
         });
     });
 
@@ -46,6 +48,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             // Create a temporary URL for the selected image file (to preview before upload)
             imageUrl = URL.createObjectURL(file);
+
         }
     });
 
