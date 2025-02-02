@@ -205,16 +205,3 @@ document.addEventListener("DOMContentLoaded", function () {
     // Initial filtering on page load
     updateImageVisibility();
 });
-// Navigation Click Handler
-document.querySelectorAll('.buttons a').forEach(button => {
-    button.addEventListener("click", function() {
-        document.querySelectorAll('.section').forEach(section => {
-            section.classList.remove("active"); // Hide all sections
-        });
-
-        const targetSection = document.getElementById(this.dataset.section);
-        if (targetSection) {
-            targetSection.classList.add("active"); // Show the selected section
-        }
-    });
-});

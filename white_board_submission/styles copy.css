@@ -1,40 +1,16 @@
 /* 🔹 General Page Styling */
-html, body {
-    background-image: url('sea.jpeg');
-    background-size: cover; 
-    background-position: center; 
-    background-repeat: no-repeat; 
-    height: 100%; /* Allows scrolling if needed */
-    padding: 0;
-    margin: 0; 
-    text-align: center; 
-    color: white; 
-    font-family: Arial, sans-serif; 
-    overflow: auto; /* Enables scrolling for mobile users */
-    opacity: 0;
-    animation: fadeIn 2.0s ease-in-out forwards;
+body {
+    background-image: url('cathy.jpg'); /* Background image for the whole page */
+    background-size: cover; /* Ensures the image covers the whole screen */
+    background-position: center; /* Centers the background */
+    background-repeat: no-repeat; /* Prevents repeating background */
+    height: 100vh; /* Full height */
+    margin: 0; /* Removes default margin */
+    text-align: center; /* Centers text */
+    color: white; /* Default text color */
+    font-family: Arial, sans-serif; /* Sets font */
+    overflow: hidden; /* Prevents scrolling */
 }
-
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
-/* Responsive Design for Smaller Screens */
-@media (max-width: 768px) {
-    .buttons {
-        flex-direction: column; /* Stack buttons vertically */
-        gap: 10px; /* Reduce spacing */
-        top: 10px;
-    }
-    .content-container {
-        flex-direction: column;
-        align-items: center;
-        justify-content: flex-start;
-        padding-top: 50px;
-    }
-}
-
 
 /* 🔹 Navigation Buttons */
 .buttons {
@@ -109,26 +85,17 @@ html, body {
     left: 20px;
     font-size: 36px;
     font-weight: bold;
-    color: #FFB81C; /* Brighter Pitt Gold */
+    color: rgb(22, 21, 21); /* Dark color */
     text-decoration: none;
     font-family: 'Arial', sans-serif;
     transition: color 0.3s ease-in-out;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Improves readability */
     z-index: 1000;
 }
-
-/* Hover Effect */
-.logo:hover {
-    color: #FFC72C; /* Lighter Pitt Gold */
-    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.7);
-}
-
 
 /* 🔹 Hover Effect for Logo */
 .logo:hover {
     color: #FFB81C; /* Pitt Gold */
 }
-
 
 #bulletin {
     background-image: url('Bulletin.jpg');
@@ -271,14 +238,4 @@ html, body {
 .tab.active {
     background: #FFB81C; /* Pitt Gold */
     color: black;
-}
-.image {
-    width: 540px;
-    height: 720px;
-    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-}
-
-.image:hover {
-    transform: scale(1.05);
-    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.3);
 }

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8"> <!-- Ensures proper character encoding (like emojis, special characters...) -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Makes the website mobile responsive -->
-    <title>Fraud_Checker</title> <!-- Sets the page title in the browser tab -->
+    <title>Whiteboard</title> <!-- Sets the page title in the browser tab -->
 
     <!-- Link to external CSS file for styling -->
     <link rel="stylesheet" href="styles.css">
@@ -12,13 +12,13 @@
 <body>
 
     <!-- Pitt FOMO Title (Top Left) -->
-    <a href="#" class="logo">FRAUD CHECKER</a> <!-- Website title that also acts as a clickable link -->
+    <a href="#" class="logo">Pitt FOMO</a> <!-- Website title that also acts as a clickable link -->
 
     <!-- Navigation Buttons at the Top -->
     <div class="buttons">
         <!-- Each button has a data-section attribute that matches section IDs -->
-        <a data-section="home">Checker</a> <!-- Navigates to the Home section -->
-        <a data-section="bulletin">Add Files</a> <!-- Navigates to the Bulletin section -->
+        <a data-section="home">Home</a> <!-- Navigates to the Home section -->
+        <a data-section="bulletin">Create Bulletin</a> <!-- Navigates to the Bulletin section -->
     </div>
 
     <!-- Content Container (Holds Sections) -->
@@ -30,17 +30,18 @@
         <!-------------------------------------------------------------------------------->
         <!-- Image Gallery Section -->
         <div>
+            <!-- Tabs for filtering images by category -->
             <span class="tab active" onclick="filterImages(event, 'all')">All</span>
-            <span class="tab" onclick="filterImages(event, 'fake')">Commerce Fake statement</span>
-            <span class="tab" onclick="filterImages(event, 'real')">PNC Real statement</span>
-
+            <span class="tab" onclick="filterImages(event, 'arts')">Arts</span>
+            <span class="tab" onclick="filterImages(event, 'education')">Education</span>
+            <span class="tab" onclick="filterImages(event, 'sports')">Sports</span>
         </div>
 
         <!-- Image placeholders for different categories -->
         <div>
-            <img class="image fake" src="fake.jpg" width="540" height="720"> <!-- Image for Arts category -->
-            <img class="image real" src="real.png" width="540" height="720"> <!-- Image for Education category -->
-            <img class="image fake" id="dynamicImage" width="540" height="720" style="display: none;"> <!-- Image for Sports category (dynamic) -->
+            <img class="image arts" src="cathy.jpg" width="180" height="240"> <!-- Image for Arts category -->
+            <img class="image education" src="bulletin.jpg" width="180" height="240"> <!-- Image for Education category -->
+            <img class="image sports" id="dynamicImage" width="180" height="240"> <!-- Image for Sports category (dynamic) -->
         </div>
 
     </div>
@@ -57,8 +58,9 @@
         <div id="filters-container">
             <h3>Select Filters</h3> <!-- Heading for filter selection -->
             <div id="filters">
-                <label><input type="checkbox" value="fake"> Commerce Fake statement</label> <!-- Checkbox for Arts category -->
-                <label><input type="checkbox" value="real"> PNC Real statement</label> <!-- Checkbox for Education category -->
+                <label><input type="checkbox" value="arts"> Arts</label> <!-- Checkbox for Arts category -->
+                <label><input type="checkbox" value="education"> Education</label> <!-- Checkbox for Education category -->
+                <label><input type="checkbox" value="sports"> Sports</label> <!-- Checkbox for Sports category -->
             </div>
         </div>
 
